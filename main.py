@@ -20,7 +20,8 @@ screen_size = int(display_info.current_w * 0.9), int(display_info.current_h * 0.
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption('Simple Acoustics')
 
-# initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+# initialize font
+# must be called after 'pygame.init()' to avoid 'Font not Initialized' error
 font = pygame.font.SysFont("consolas", 20)
 label = font.render("LMC - add source / CMC - clean screen / RMC - start animation", 1, Color("White"))
 
@@ -42,7 +43,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                # pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # LEFT=1
                 env.add_source(event.pos[0], event.pos[1])
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 2:  # CENTER=2
@@ -69,6 +69,8 @@ def main():
 
         pygame.display.flip()
         clock.tick(100)
+
+    pygame.quit()
 
 if __name__ == '__main__':
     main()
