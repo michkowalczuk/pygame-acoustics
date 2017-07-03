@@ -6,15 +6,13 @@ from environment import *
 os.environ['SDL_VIDEO_CENTERED'] = '1'  # centers window, must be before pygame.init()!
 pygame.init()  # initialize pygame
 
-PARTICLES_PER_SOURCE = 360
+PARTICLES_PER_SOURCE = 40
 REFLECTION_ORDER = 5
 PARTICLE_SPEED = 5
 PARTICLE_SIZE = 4  # reflection_order + 1
 BACKGROUND_COLOR = Color("Black")
 START_COLOR = Color("Violet")
 END_COLOR = Color("Green")
-#     Color("Firebrick"),
-#     Color("Gold"),
 
 # pygame stuff
 display_info = pygame.display.Info()  # create a video display information object
@@ -35,24 +33,8 @@ def main():
                       END_COLOR,
                       REFLECTION_ORDER)
 
-    # env.add_source(600, 600)
     env.add_source(200, 200)
-    # env.add_source(200, 150)
-    # env.add_source(200, 100)
-    # env.add_source(200, 200)
-    # env.add_source(200, 250)
-    # env.add_source(200, 300)
-    # env.add_source(200, 350)
-    # env.add_source(200, 400)
-    # env.add_source(200, 450)
-    # env.add_source(200, 500)
-    # env.add_source(200, 550)
-    # env.add_source(200, 600)
-    # env.add_source(200, 650)
-    # env.add_source(200, 700)
 
-    # from each source create sound molecules
-    # env.generate_particles(PARTICLE_SIZE)
     clock = pygame.time.Clock()
     running = True
     animation = False
@@ -67,6 +49,7 @@ def main():
                 env.clean()
                 animation = False
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:  # RIGHT=3
+                # from each source create sound molecules
                 env.generate_particles(PARTICLE_SIZE, PARTICLE_SPEED, PARTICLES_PER_SOURCE)
                 animation = True
 
